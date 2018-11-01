@@ -1,4 +1,4 @@
-<project name="usermanagement" basedir="." default="test">
+<project name="usermanagement" basedir="." default="">
 	<property name="build.compiler" 
 	      value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
 	<property name="build-dir" value="${basedir}/target"/>
@@ -15,7 +15,7 @@
 	    <mkdir dir="${classes-dir}"/>      
 	</target>
 	<target name="compile" depends="init">
-		<javac srcdir="${main-java-dir}" destdir="${build-dir}"/>
+		<javac includeantruntime="false"  srcdir="${main-java-dir}" destdir="${build-dir}"/>
 	</target>
 	<target name="test-compile" depends="compile">
 		<javac srcdir="${test-java-dir}" destdir="${build-dir}"/>

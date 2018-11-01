@@ -3,25 +3,14 @@ package ITKN_16_8_Yarychkina_usermanagement;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
+
+//import ua.nure.kn16.yarychkina.usemanagment.User;
 
 public class User implements Serializable{
 	private Long id;
-    private String firstName;
-    private String lastName;
-    private Date dateOfBirth;
-    
-    public User(){
-        super();
-    }
-
-    public User(Long id, String firstName, String lastName, Date dateOfBirth) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-    }
-    
+	private String firstName;
+	private String lastName;
+	private Date dateOfBirth;
 	public Long getId() {
 		return id;
 	}
@@ -46,43 +35,70 @@ public class User implements Serializable{
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-    
-	@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) &&
-                Objects.equals(firstName, user.firstName) &&
-                Objects.equals(lastName, user.lastName) &&
-                Objects.equals(dateOfBirth, user.dateOfBirth);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, dateOfBirth);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                '}';
-    }
-
-    public String getFullName(){
-        return getFirstName()+", "+ getLastName();
-    }
-
-    public int getAge() {
-        Calendar calendar = Calendar.getInstance();
+	public Object getFullName() {
+		// TODO Auto-generated method stub
+		return getFirstName() + ", " + getLastName();
+	}
+	public int getAge() {
+		Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
-        int currentYear = calendar.get(Calendar.YEAR);
-        calendar.setTime(getDateOfBirth());
-        int year = calendar.get(Calendar.YEAR);
-        return currentYear - year;
-    }
+        final int currentYear = calendar.get(Calendar.YEAR);
+        final int currentMonth = calendar.get(Calendar.MONTH);
+        final int currentDate = calendar.get(Calendar.DATE);
+
+        calendar.setTime(dateOfBirth);
+        final int birthYear = calendar.get(Calendar.YEAR);
+        final int birthMonth = calendar.get(Calendar.MONTH);
+        final int birthDate = calendar.get(Calendar.DATE);
+
+        int age = currentYear - birthYear;
+        if (currentMonth < birthMonth || (currentMonth == birthMonth && currentDate < birthDate)) {
+            --age;
+        }
+        return age;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (dateOfBirth == null) {
+			if (other.dateOfBirth != null)
+				return false;
+		} else if (!dateOfBirth.equals(other.dateOfBirth))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		return true;
+	}
+	
 }
