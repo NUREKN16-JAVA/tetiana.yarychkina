@@ -11,6 +11,25 @@ public class User implements Serializable{
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
+	
+	public User(){
+        super();
+    }
+
+    public User(Long id, String firstName, String lastName, Date dateOfBirth) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public User(String firstName, String lastName, Date dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+	
 	public Long getId() {
 		return id;
 	}
@@ -36,7 +55,6 @@ public class User implements Serializable{
 		this.dateOfBirth = dateOfBirth;
 	}
 	public Object getFullName() {
-		// TODO Auto-generated method stub
 		return getFirstName() + ", " + getLastName();
 	}
 	public int getAge() {
