@@ -10,7 +10,7 @@ public class User implements Serializable{
 	private Long id;
 	private String firstName;
 	private String lastName;
-	private Date dateOfBirth;
+	private Date dateOfBirthd;
 	
 	public User(){
         super();
@@ -20,13 +20,13 @@ public class User implements Serializable{
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirthd = dateOfBirthd;
     }
 
     public User(String firstName, String lastName, Date dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirthd = dateOfBirth;
     }
 
 	
@@ -49,10 +49,10 @@ public class User implements Serializable{
 		this.lastName = lastName;
 	}
 	public Date getDateOfBirth() {
-		return dateOfBirth;
+		return dateOfBirthd;
 	}
 	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+		this.dateOfBirthd = dateOfBirth;
 	}
 	public Object getFullName() {
 		return getFirstName() + ", " + getLastName();
@@ -64,7 +64,7 @@ public class User implements Serializable{
         final int currentMonth = calendar.get(Calendar.MONTH);
         final int currentDate = calendar.get(Calendar.DATE);
 
-        calendar.setTime(dateOfBirth);
+        calendar.setTime(dateOfBirthd);
         final int birthYear = calendar.get(Calendar.YEAR);
         final int birthMonth = calendar.get(Calendar.MONTH);
         final int birthDate = calendar.get(Calendar.DATE);
@@ -80,7 +80,7 @@ public class User implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+		result = prime * result + ((dateOfBirthd == null) ? 0 : dateOfBirthd.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -96,10 +96,10 @@ public class User implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (dateOfBirth == null) {
-			if (other.dateOfBirth != null)
+		if (dateOfBirthd == null) {
+			if (other.dateOfBirthd != null)
 				return false;
-		} else if (!dateOfBirth.equals(other.dateOfBirth))
+		} else if (!dateOfBirthd.equals(other.dateOfBirthd))
 			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
