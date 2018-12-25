@@ -1,6 +1,7 @@
 package ITKN_16_8_Yarychkina_usermanagement;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -23,10 +24,10 @@ public class User implements Serializable{
         this.dateOfBirthd = dateOfBirthd;
     }
 
-    public User(String firstName, String lastName, Date dateOfBirth) {
+    public User(String firstName, String lastName, LocalDate localDate) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirthd = dateOfBirth;
+        this.dateOfBirthd = localDate;
     }
 
 	
