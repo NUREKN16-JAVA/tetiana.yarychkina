@@ -1,7 +1,5 @@
 package ITKN_16_8_Yarychkina_usermanagement.db;
 
-import static org.junit.Assert.*;
-
 import java.util.Collection;
 import java.util.Date;
 
@@ -10,11 +8,9 @@ import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.XmlDataSet;
-import org.junit.Before;
 import org.junit.Test;
 
 import ITKN_16_8_Yarychkina_usermanagement.User;
-import junit.framework.TestCase;
 
 public class HsqldbUserDaoTest extends DatabaseTestCase{
 	private HsqldbUserDao dao;
